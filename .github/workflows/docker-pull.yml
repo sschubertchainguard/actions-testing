@@ -1,0 +1,28 @@
+name: chainctl-auth-and-docker-pull
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  newmethod-dockerpull:
+    name: chainctl-auth-and-docker-pull
+    
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+    
+    steps:
+    - name: Install chainctl and authenticate
+      uses: chainguard-dev/setup-chainctl@main
+      with:
+        identity: ${{secrets.CHAINCTL_ID}}
+
+    - name: Execute chainctl command
+      run: |
+          chainctl img repo list -o table
+
+    - name: Run Docker Pull
+      run: |
+        docker pull cgr.dev/scorwin.dev/curl:latest-dev          
+        docker image ls
