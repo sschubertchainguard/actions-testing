@@ -1,0 +1,9 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-cli
+
+  steps:
+    - name: git
+      image: cgr.dev/chainguard/git:2.39.0
