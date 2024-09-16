@@ -17,6 +17,7 @@ jobs:
       uses: chainguard-dev/setup-chainctl@main
       with:
         identity: ${{secrets.CHAINCTL_ID}}
+        verbosity: 2
 
     - name: Execute chainctl command
       run: |
