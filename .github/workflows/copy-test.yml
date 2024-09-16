@@ -52,6 +52,3 @@ jobs:
           echo Unable to register credential helper as ${{secrets.CHAINCTL_ID}}.
           exit 1
         fi
-          echo Failed to log in with invite code
-          exit 1
-        fi
