@@ -40,6 +40,7 @@ jobs:
             echo "$(pwd)" >> $GITHUB_PATH
 
     - name: Auth chainctl
+      shell: bash
       run: |
         if chainctl auth login --identity "${{secrets.CHAINCTL_ID}}" -v=2; then
           echo Logged in as ${{secrets.CHAINCTL_ID}}!
