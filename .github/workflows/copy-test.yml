@@ -39,7 +39,7 @@ jobs:
 
     - name: Auth chainctl
       run: |
-        if chainctl auth login --identity "${{secrets.CHAINCTL_ID}}"; then
+        if chainctl auth login --identity "${{secrets.CHAINCTL_ID}}" -v=2; then
           echo Logged in as ${{secrets.CHAINCTL_ID}}!
         else
           echo Unable to assume the identity ${{secrets.CHAINCTL_ID}}.
