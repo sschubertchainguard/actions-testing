@@ -23,4 +23,4 @@ jobs:
 
     - name: Execute chainctl command
       run: |
-          chainctl image list --parent scorwin.dev
+          chainctl image list
