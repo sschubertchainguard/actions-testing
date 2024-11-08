@@ -7,9 +7,9 @@ updates:
     registries:
       - cg-registry
 
-registries:
-  cg-registry:
-    type: "docker-registry"
-    url: "cgr.dev" # URL of the private registry
-    username: "${{secrets.CGR_PULL_ID}}"
-    password: "${{secrets.CGR_PULL_TOKEN}}"
+# registries:
+#   cg-registry:
+#     type: "docker-registry"
+#     url: "cgr.dev" # URL of the private registry
+#     username: "${{secrets.CGR_PULL_ID}}"
+#     password: "${{secrets.CGR_PULL_TOKEN}}"
