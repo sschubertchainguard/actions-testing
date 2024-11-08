@@ -4,8 +4,8 @@ updates:
     directory: "/dependabot"
     schedule:
       interval: "daily"
-    registries:
-      - cg-registry
+    # registries:
+    #   - cg-registry
 
 # registries:
 #   cg-registry:
