@@ -1,0 +1,17 @@
+name: docker-login-test
+
+on:
+  push:
+    branches: main
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Login to cgr.dev
+        uses: docker/login-action@v3
+        with:
+          registry: cgr.dev
+          username: ${{ secrets.CGR_PULL_ID }}
+          password: ${{ secrets.CGR_PULL_TOKEN }}
