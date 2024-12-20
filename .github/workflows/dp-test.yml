@@ -1,0 +1,23 @@
+name: dp-test
+
+on:
+  workflow_dispatch: {}
+
+#note - we define this in job
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  dp-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install chainctl
+      uses: chainguard-dev/setup-chainctl@main
+      with:
+        identity: ${{secrets.CHAINCTL_ID}}
+
+    - name: Pull and push chainguard python image
+      run: |
+        docker pull cgr.dev/scorwin.dev/prometheus:latest
