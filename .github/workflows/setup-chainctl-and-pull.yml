@@ -1,14 +1,11 @@
-name: chainctl-auth-and-docker-pull
+name: setup-chainctl-and-pull
 
 on:
   workflow_dispatch: {}
 
 jobs:
-  newmethod-dockerpull:
-    name: chainctl-auth-and-docker-pull
-    
+  setup-chainctl-and-pull:
     runs-on: ubuntu-latest
-
     permissions:
       id-token: write
     
