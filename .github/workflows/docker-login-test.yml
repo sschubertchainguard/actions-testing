@@ -14,3 +14,8 @@ jobs:
           registry: cgr.dev
           username: ${{ secrets.CGR_PULL_ID }}
           password: ${{ secrets.CGR_PULL_TOKEN }}
+      -
+        name: Run Docker Pull
+        run: |
+          docker pull cgr.dev/scorwin.dev/curl:latest-dev          
+          docker image ls
