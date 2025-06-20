@@ -1,0 +1,35 @@
+name: cosign-verify
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'Image name (without tag)'
+        required: true
+      tag:
+        description: 'Image tag'
+        required: true
+        default: 'latest'
+
+jobs:
+  setup-chainctl-and-pull:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    
+    steps:
+    - name: Install chainctl and authenticate
+      uses: chainguard-dev/setup-chainctl@main
+      with:
+        identity: ${{secrets.CHAINCTL_ID}}
+
+    - name: Install cosign
+      uses: sigstore/cosign-installer@main
+      with:
+        cosign-release: 'v3.9.0'
+
+    - name: Sign the container image
+      run: cosign verify \
+        --certificate-oidc-issuer=https://issuer.enforce.dev \
+        --certificate-identity-regexp="https://issuer.enforce.dev/${{secrets.CATALOG_SYNCER}}|${{secrets.APKO_BUILDER}}" \
+        cgr.dev/${PARENT}/${github.event.inputs.image}:${github.event.inputs.tag} | jq
