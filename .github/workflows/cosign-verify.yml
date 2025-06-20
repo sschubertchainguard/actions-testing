@@ -25,8 +25,6 @@ jobs:
 
     - name: Install cosign
       uses: sigstore/cosign-installer@main
-      with:
-        cosign-release: 'v3.9.0'
 
     - name: Sign the container image
       run: cosign verify \
