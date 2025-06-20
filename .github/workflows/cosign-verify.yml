@@ -12,7 +12,7 @@ on:
         default: 'latest'
 
 jobs:
-  setup-chainctl-and-pull:
+  verify-signature:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -24,7 +24,7 @@ jobs:
         identity: ${{secrets.CHAINCTL_ID}}
 
     - name: Install cosign
-      uses: sigstore/cosign-installer@main
+      uses: sigstore/cosign-installer@v3.9.0
 
     - name: Sign the container image
       run: cosign verify \
