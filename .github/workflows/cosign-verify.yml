@@ -29,5 +29,5 @@ jobs:
     - name: Verify signature
       run: cosign verify \
         --certificate-oidc-issuer=https://issuer.enforce.dev \
-        --certificate-identity-regexp="https://issuer.enforce.dev/${{secrets.CATALOG_SYNCER}}|${{secrets.APKO_BUILDER}}" \
+        --certificate-identity-regexp="https://issuer.enforce.dev/${{ secrets.CATALOG_SYNCER }}|${{ secrets.APKO_BUILDER }}" \
         cgr.dev/${{ secrets.PARENT }}/${{ github.event.inputs.image }}:${{ github.event.inputs.tag }} | jq
